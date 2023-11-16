@@ -1,0 +1,5 @@
+1. Modelo conceitual;
+2. Modelo lógico;
+3. Modelo físico (script, ciração doo BD);
+4. Inserções:
+	a) 3 inserções por tabela;

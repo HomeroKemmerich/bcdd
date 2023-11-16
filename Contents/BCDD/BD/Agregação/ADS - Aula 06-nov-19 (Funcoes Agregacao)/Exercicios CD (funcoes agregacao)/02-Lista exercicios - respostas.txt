@@ -1,0 +1,68 @@
+-- 01- Mostrar os CDs que custam mais de 20.00, mas não incluir abuns de rock
+SELECT * 
+FROM CD 
+WHERE Preco > 20.00 and Genero <> 'Rock';
+
+-- 02- Mostrar uma lista de CDs que tem o mesmo gênero do CD '18 Single' 
+SELECT *
+FROM CD
+WHERE Genero = (Select Genero from CD where titulo = '18 Single');
+
+-- 03- Mostrar quantos CDs estão cadastrados
+SELECT COUNT (*) 
+FROM CD;
+
+-- 04- Mostrar o preço médio dos CDs
+SELECT AVG(Preco)
+FROM CD;
+
+-- 05- Mostrar o preço do CD mais caro 
+SELECT MAX(Preco) 
+FROM CD;
+
+-- 06- Mostrar o menor preço de qualquer CD
+SELECT MIN(Preco) 
+FROM CD;
+
+-- 07- Mostrar o número de CDs que custa 19,90 
+SELECT count(*)
+FROM CD
+WHERE preco = '19.90';
+
+-- 08- Mostrar o titulo do CD mais caro do gênero Rock 
+SELECT titulo
+FROM CD
+WHERE preco = (SELECT MAX(Preco) FROM CD WHERE genero = 'Rock');
+
+-- 09- mostrar o número de CDs de cada gênero 
+SELECT genero, count(*)
+FROM CD
+GROUP BY genero;
+
+-- 10- Mostrar os gêneros e o preço médio dos CD em cada gênero 
+SELECT genero, avg(preco)
+FROM CD
+GROUP BY genero;
+
+-- 11- Mostrar nomes artistas, nro CDs desse artista, e o preço médio para os seus CDs
+SELECT Nome, count(*), avg(preco)
+FROM CD, ARTISTA
+WHERE CD.idArt = ARTISTA.idArt
+GROUP BY Nome;
+
+/* 12- Mostrar os nomes dos artistas, o número de CDs desse artista, e o preço médio para os seus CDs.
+      * Mostrar apenas os artistas que possuem mais do que 1 CD cadastrado */
+SELECT Nome, count(*), avg(preco)
+FROM CD, ARTISTA
+WHERE CD.idArt = ARTISTA.idArt
+GROUP BY Nome
+      HAVING count(*) > 1;
+
+/* 13- Mostrar os nomes dos artistas, o número de CDs desse artista, e o preço médio para os seus CDs.
+      * Mostrar apenas os artistas com CDs do tipo Rock  
+      * Mostrar apenas os artistas que possuem mais do que 1 CD cadastrado */
+SELECT Nome, count(*), avg(preco)
+FROM CD, ARTISTA
+WHERE CD.idArt = ARTISTA.idArt and Genero = 'Rock'
+GROUP BY Nome
+      HAVING count(*) > 1;

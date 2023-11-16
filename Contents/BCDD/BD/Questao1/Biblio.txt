@@ -1,0 +1,13 @@
+Livro (CodLivro, AnoPub, Autores, Ed, Titulo)
+
+Aluno (MatriculaAluno, NomeAluno, MailAluno)
+
+Prof (MatriculaProf, NomeProf, MailProf, Titulacao)
+
+Emprestimo(Id, DataRet, DataDev, CodRet, InfoLivro)
+	CodRet REFERENCIA Aluno OU Prof
+	InfoLivro REFERENCIA EmprestimoLivro
+	
+EmprestimoLivro(CodLivro, Id)
+	CodLivro REFERENCIA Livro,
+	Id REFERENCIA Emprestimo

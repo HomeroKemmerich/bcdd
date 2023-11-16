@@ -1,0 +1,48 @@
+-- mostrar as categorias cadastradas
+select categoria 
+from categoria;
+
+-- mostrar os filmes cadastrados
+select *
+from filme;
+
+select titulo
+from filme;
+
+select titulo 
+from filme 
+order by titulo ASC;
+
+select titulo 
+from filme 
+order by titulo DESC;
+
+-- mostrar o título dos filmes de ação
+select titulo
+from filme
+where categoria = 'Ação';
+
+-- mostrar os clientes cadastrados
+select *
+from cliente;
+
+-- mostrar os empréstimos realizados no dia de hoje
+select *
+from emprestimo
+where dtret = CURRENT_DATE;
+
+-- FAZER A DEVOLUÇÃO DA FITA 100
+update emprestimo
+   set dtdev = '09/08/2019'
+   where nrofita = 100 and 
+         nrocliente = 173709 and
+		 dtret = '08/08/2019';
+   
+-- mostrar as fitas do filme 'A Freira'
+select *
+from fita
+where idfilme = (select idfilme
+                 from filme
+                 where titulo = 'A Freira');
+
+

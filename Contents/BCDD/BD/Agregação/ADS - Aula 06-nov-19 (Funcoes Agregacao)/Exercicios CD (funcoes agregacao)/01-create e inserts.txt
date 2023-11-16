@@ -1,0 +1,39 @@
+﻿CREATE TABLE Artista (
+       idArt INTEGER NOT NULL,
+       Nome VARCHAR(50) NOT NULL,
+       CONSTRAINT pk_artist PRIMARY KEY (idArt)
+);
+	
+CREATE TABLE CD (
+       idCD INTEGER NOT NULL,
+       idArt INTEGER NOT NULL,
+       Titulo VARCHAR(100) NOT NULL,
+       Preco REAL NOT NULL,
+       Genero VARCHAR(30) ,
+       CONSTRAINT pk_cd PRIMARY KEY (idCD),
+       CONSTRAINT fk_cd_art FOREIGN KEY (idArt) REFERENCES Artista
+);
+
+INSERT INTO Artista (idart, Nome) VALUES (1, 'U2');
+INSERT INTO Artista (idart, Nome) VALUES (2, 'AC/DC');
+INSERT INTO Artista (idart, Nome) VALUES (3, 'Beyonce');
+INSERT INTO Artista (idart, Nome) VALUES (4, 'Bruce Springsteen');
+INSERT INTO Artista (idart, Nome) VALUES (5, 'Britney Spears');
+INSERT INTO Artista (idart, Nome) VALUES (6, 'Jay-Z');
+INSERT INTO Artista (idart, Nome) VALUES (7, 'Lady Gaga');
+INSERT INTO Artista (idart, Nome) VALUES (8, 'Madonna');
+INSERT INTO Artista (idart, Nome) VALUES (9, 'Kenny Chesney');
+INSERT INTO Artista (idart, Nome) VALUES (10, 'Black Eyed Peas');
+
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (50, 1, '18 Single', 'Rock', 36.00);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (51, 1, 'No Line on the Horizon', 'Rock', 37.90);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (52, 2, 'Black Ice', 'Rock', 19.90);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (53, 3, ' I Am... Sasha Fierce', 'Hip Hop', 29.90);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (54, 3, 'The Best Of Beyonce', 'Pop', 20.00);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (55, 4, 'We Shall Overcome', 'Rock', 33.30);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (56, 5, 'Blackout', 'Pop', 14.90);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (57, 6, 'Kindom Come', 'Rap', 27.90);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (58, 7, 'The Fame', 'Dance', 25.00);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (59, 8, 'Hard Candy', 'Pop', 32.90);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (60, 9, 'Greatest Hits', 'Country', 19.90);
+INSERT INTO CD (idCD, idArt, Titulo, Genero, Preco) VALUES (61, 10, 'The E.N.D', 'Rock', 34.90);

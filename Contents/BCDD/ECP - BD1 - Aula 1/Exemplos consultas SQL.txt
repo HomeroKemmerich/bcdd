@@ -1,0 +1,33 @@
+-- mostrar quem são os aniversariantes de agosto
+select *
+from aluno
+where extract(month from dtnasc) = 8;
+
+-- mostrar quem são os aniversariantes do MÊS
+select *
+from aluno
+where extract(month from dtnasc) = extract(month from CURRENT_DATE);
+
+-- mostrar os alunos de Passo Fundo
+select codCidade 
+from cidade
+where nome = 'Passo Fundo';
+
+select * 
+from aluno
+where codCidade = 1;
+
+select nome
+from aluno 
+where codCidade = (select codCidade 
+				   from cidade
+				   where nome = 'Passo Fundo');				   
+select aluno.nome
+from aluno, cidade
+where aluno.codcidade = cidade.codcidade and
+      cidade.nome = 'Passo Fundo';
+	  
+select aluno.nome
+from aluno JOIN cidade
+     ON aluno.codcidade = cidade.codcidade and
+        cidade.nome = 'Passo Fundo';
